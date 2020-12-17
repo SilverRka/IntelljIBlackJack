@@ -38,12 +38,9 @@ public class GameComponent extends JComponent implements MouseListener {//this c
   public void paintComponent(Graphics g) {
     Graphics2D g2 = (Graphics2D) g; //we first cast Graphics g to Graphics2D g2 in order to use a more powerful brush.
 
-    try {
-      backgroundImage = ImageIO.read(new File("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/images/background.png")); //we read a file which is the png image of a poker table for our background image.
-      logo = ImageIO.read(new File("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/images/blackjackLogo.png")); //we read a file which is the png image of a blackjack logo for the logo on the poker table.
-      chip = ImageIO.read(new File("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/images/chip.png")); //we read a file which is the png image of a poker chip for the chip on the poker table.
-    }
-    catch(IOException e) {}
+    backgroundImage = ImageLoader.load("images/background.png"); //we read a file which is the png image of a poker table for our background image.
+    logo = ImageLoader.load("images/blackjackLogo.png"); //we read a file which is the png image of a blackjack logo for the logo on the poker table.
+    chip = ImageLoader.load("images/chip.png"); //we read a file which is the png image of a poker chip for the chip on the poker table.
 
     g2.drawImage(backgroundImage, 0, 0, null); //we draw these images to the component.
     g2.drawImage(logo, 510, 200, null);

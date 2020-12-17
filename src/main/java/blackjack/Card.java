@@ -37,12 +37,12 @@ public class Card {
   
   public void printCard(Graphics2D g2, boolean dealerTurn, boolean faceDown, int cardNumber) throws IOException {//this method draws the card accordingly (looking to the parameters). It throws a IOException because we will be reading some image files.
     //The first parameter is the g2[powerful brush] since we will draw some images. The second parameter tells the method if it is dealer's turn. The third method checks if the card drawn will be face down or face up. The fourth parameter tells the method which card on the line will be drawn so that each line could be drawn next to each other in a horizontal line.
-    BufferedImage deckImg = ImageIO.read(new File("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/images/cardSpriteSheet.png")); //we read the sprite sheet image.
+    BufferedImage deckImg = ImageLoader.load("images/cardSpriteSheet.png"); //we read the sprite sheet image.
     int imgWidth = 950; //this is the width of the sprite sheet image in pixels.
     int imgHeight = 392; //this is the height of the sprite sheet image in pixels.
     
     BufferedImage[][] cardPictures = new BufferedImage[4][13]; //we create this two-dimensional array to store the individiual card pictures.
-    BufferedImage backOfACard = ImageIO.read(new File("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/images/backsideOfACard.jpg")); //this image will be the back of a card.
+    BufferedImage backOfACard = ImageLoader.load("images/backsideOfACard.jpg"); //this image will be the back of a card.
     
     for (int c = 0; c < 4; c++) { 
       for (int r = 0; r < 13; r++) {

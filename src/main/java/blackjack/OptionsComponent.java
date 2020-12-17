@@ -26,10 +26,7 @@ public class OptionsComponent extends JComponent implements ActionListener{
 
     Graphics2D g2 = (Graphics2D) g; //we first cast Graphics g to Graphics2D g2 in order to use a more powerful brush.
 
-    try {
-      backgroundImage = ImageIO.read(new File("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/images/background.png")); //we read a file which is the png image of a poker table for our background image.
-    }
-    catch(IOException e) {}
+    backgroundImage = ImageLoader.load("images/background.png"); //we read a file which is the png image of a poker table for our background image.
 
     g2.drawImage(backgroundImage, 0, 0, null); //we draw the background image to the component.
 
@@ -89,7 +86,7 @@ public class OptionsComponent extends JComponent implements ActionListener{
   public static void playAmbienceMusic() {//this is a static method that plays a wav file when it is called.
 
     try{
-      InputStream in = new FileInputStream("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/sounds/casinoAmbience.wav"); //we first read the wav file.
+      InputStream in = new FileInputStream("/Users/rohitkumar.c/workspace/IntelljIBlackJack/src/main/java/blackjack/sounds/casinoAmbience.wav"); //we first read the wav file.
       //AudioStream audio = new AudioStream(in); //then store it as an audio stream.
 
       //AudioPlayer.player.start(audio); //then, we basically 'play' this sound through AudioPlayer.
