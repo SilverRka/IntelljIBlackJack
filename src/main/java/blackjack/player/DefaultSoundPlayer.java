@@ -2,33 +2,31 @@ package blackjack.player;
 
 import com.intellij.openapi.diagnostic.Logger;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public final class DefaultSoundPlayer {
 
     private static final Logger LOGGER = Logger.getInstance( DefaultSoundPlayer.class );
 
-    private final Path filePath;
+    private final String filePath;
 
     private Clip clip;
 
-    private DefaultSoundPlayer(Path filePath ) {
+    private DefaultSoundPlayer(String filePath ) {
         this.filePath = filePath;
     }
 
-    public static DefaultSoundPlayer ofFile( Path filePath ) {
+    public static DefaultSoundPlayer ofFile( String filePath ) {
         return new DefaultSoundPlayer( filePath );
     }
 
     public void play() {
-        try ( InputStream soundStream = new BufferedInputStream(Files.newInputStream( filePath )) ) {
+        try (AudioInputStream soundStream = AudioSystem.getAudioInputStream(DefaultSoundPlayer.class.getClassLoader().getResourceAsStream(filePath)) ) {
             clip = SoundClipUtil.openClip( soundStream );
             clip.start();
         } catch ( IOException | LineUnavailableException | UnsupportedAudioFileException e ) {

@@ -8,7 +8,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -155,7 +154,6 @@ public class GameComponent extends JComponent implements MouseListener {//this c
 
   public static void playChipsSettle() {//this is a static method that plays a wav file when it is called.
 
-    String path = "/Users/paras.narang/Zen/events/fk_hackday_20/IntelljIBlackJack/src/main/java/blackjack/sounds/chipsSettle.wav";
-    DefaultSoundPlayer.ofFile(Paths.get(path)).playAndWait(); //then, we basically 'play' this sound through AudioPlayer.
+    DefaultSoundPlayer.ofFile("sounds/chipsSettle.wav").playAndWait();
   }
 }

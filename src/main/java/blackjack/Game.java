@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Game {
@@ -259,7 +258,6 @@ public class Game {
 
   public void playCardDraw() { //this is a static method that plays a wav file when it is called.
 
-    String path = "/Users/paras.narang/Zen/events/fk_hackday_20/IntelljIBlackJack/src/main/java/blackjack/sounds/cardDraw.wav";
-    DefaultSoundPlayer.ofFile(Paths.get(path)).playAndWait(); //then, we basically 'play' this sound through AudioPlayer.
+    DefaultSoundPlayer.ofFile("sounds/cardDraw.wav").playAndWait();
   }
 }
