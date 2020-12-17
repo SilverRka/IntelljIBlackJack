@@ -1,5 +1,6 @@
 package com.github.silverrka.intelljiblackjack.actions;
 
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
@@ -41,6 +42,7 @@ public class BlackJack extends JFrame{
 
         super.paint(g);
         g.drawString("Dealers Hand", 20, 60);
+        g.drawString("Sum: "+ getDealerSum(), 90, 60);
         g.drawString("Your Hand", 20, 230);
         g.drawString("Sum: "+getUserSum(), 90, 230);
         int x1 = 10;
@@ -164,8 +166,10 @@ public class BlackJack extends JFrame{
         add(userPane, BorderLayout.SOUTH);
         // Set Starting Money
         try {
-            img = ImageIO.read(new File("cards.png"));
-        } catch (IOException e) {}
+            img = ImageIO.read(new File("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/com/github/silverrka/intelljiblackjack/actions/cards.png"));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
         labelMoney.setText(Integer.toString(cash));
     }
     /**

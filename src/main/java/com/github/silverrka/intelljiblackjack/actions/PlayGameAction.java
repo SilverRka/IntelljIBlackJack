@@ -1,5 +1,6 @@
 package com.github.silverrka.intelljiblackjack.actions;
 
+import blackjack.Tester;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
@@ -8,9 +9,9 @@ public class PlayGameAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
         int amount = 1000;
-        BlackJack blackJack
-                = new BlackJack(amount);
-
+//        BlackJack blackJack
+//                = new BlackJack(amount);
+        Tester.openMenu();
     }
 
     @Override
