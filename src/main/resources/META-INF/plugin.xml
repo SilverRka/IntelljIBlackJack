@@ -13,4 +13,15 @@
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
     </actions>
+
+    <applicationListeners>
+        <listener class="blackjack.listeners.ApplicationLifecycleListener" topic="com.intellij.ide.AppLifecycleListener" />
+    </applicationListeners>
+
+    <projectListeners>
+        <listener class="blackjack.listeners.ProjectActivityListener" topic="com.intellij.task.ProjectTaskListener" />
+        <listener class="blackjack.listeners.FileEditorEventListener" topic="com.intellij.openapi.fileEditor.FileEditorManagerListener" />
+        <listener class="blackjack.listeners.DocumentSaveListener" topic="com.intellij.openapi.fileEditor.FileDocumentManagerListener" />
+    </projectListeners>
+    <idea-version since-build="201.6668.113"/>
 </idea-plugin>
