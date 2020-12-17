@@ -7,13 +7,10 @@
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.silverrka.intelljiblackjack.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.silverrka.intelljiblackjack.services.MyProjectService"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.silverrka.intelljiblackjack.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="com.github.silverrka.intelljiblackjack.actions.PlayGameAction" class="com.github.silverrka.intelljiblackjack.actions.PlayGameAction"
+                text="Play Game Action" description="Play game example">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
