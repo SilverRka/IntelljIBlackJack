@@ -1,11 +1,10 @@
 package blackjack;
 
-import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
-import javax.imageio.ImageIO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.*;
 
 public class OptionsComponent extends JComponent implements ActionListener{
 
@@ -83,14 +82,14 @@ public class OptionsComponent extends JComponent implements ActionListener{
     }
   }
 
-  public static void playAmbienceMusic() {//this is a static method that plays a wav file when it is called.
+//  public static void playAmbienceMusic() {//this is a static method that plays a wav file when it is called.
 
-    try{
-      InputStream in = new FileInputStream("/Users/rohitkumar.c/workspace/IntelljIBlackJack/src/main/java/blackjack/sounds/casinoAmbience.wav"); //we first read the wav file.
+//    try{
+//      InputStream in = new FileInputStream("/Users/paras.narang/Zen/events/fk_hackday_20/IntelljIBlackJack/src/main/java/blackjack/sounds/casinoAmbience.wav"); //we first read the wav file.
       //AudioStream audio = new AudioStream(in); //then store it as an audio stream.
 
       //AudioPlayer.player.start(audio); //then, we basically 'play' this sound through AudioPlayer.
-    }
-    catch(IOException e) {}
-  }
+//    }
+//    catch(IOException e) {}
+//  }
 }

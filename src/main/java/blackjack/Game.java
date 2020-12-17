@@ -1,15 +1,21 @@
 package blackjack;
 
+
+import blackjack.player.DefaultSoundPlayer;
+import javazoom.jl.player.AudioDevice;
+import javazoom.jl.player.advanced.AdvancedPlayer;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import javax.swing.*;
 
 public class Game {
+
+  private AudioDevice audioDevice;
+  private AdvancedPlayer player;
 
   ArrayList<Card> dealerHand; //this is the arraylist for the dealer's hand.
   ArrayList<Card> playerHand; //this is the arraylist for the player's hand.
@@ -107,7 +113,7 @@ public class Game {
 
     btnHit.addActionListener(new ActionListener() { //we add a action listener to the hit button. When the user clicks this button,
       public void actionPerformed(ActionEvent e) {
-        //playCardDraw();
+        playCardDraw();
         addCard(playerHand); //we will first add a card to player's hand.
         checkHand(playerHand); //then we check the player's hand because it could be round over.
         if (getSumOfHand(playerHand)<17 && getSumOfHand(dealerHand)<17){ //if the round is not over, and if the total value of dealer's hand is smaller than 17, we add a card to dealer's hand.                                                 
@@ -119,7 +125,7 @@ public class Game {
 
     btnDouble.addActionListener(new ActionListener() {//When user clicks this button, we add two cards to the player's hand. We then do the same things we do above.
       public void actionPerformed(ActionEvent e) {
-        //playCardDraw(); //we play the card drawing music here.
+        playCardDraw(); //we play the card drawing music here.
         addCard(playerHand); //we add a card to the player hand.
         addCard(playerHand); //we add the second card to the player hand.
         checkHand(playerHand); //we check the player's hand.
@@ -251,14 +257,9 @@ public class Game {
     catch (InterruptedException e) {}
   }
 
-  public static void playCardDraw() { //this is a static method that plays a wav file when it is called.
+  public void playCardDraw() { //this is a static method that plays a wav file when it is called.
 
-    try{
-      InputStream in = new FileInputStream("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/sounds/cardDraw.wav"); //we first read the wav file.
-     // AudioStream audio = new AudioStream(in); //then store it as an audio stream.
-
-     // AudioPlayer.player.start(audio); //then, we basically 'play' this sound through AudioPlayer.
-    }
-    catch(IOException e) {}
+    String path = "/Users/paras.narang/Zen/events/fk_hackday_20/IntelljIBlackJack/src/main/java/blackjack/sounds/cardDraw.wav";
+    DefaultSoundPlayer.ofFile(Paths.get(path)).playAndWait(); //then, we basically 'play' this sound through AudioPlayer.
   }
 }

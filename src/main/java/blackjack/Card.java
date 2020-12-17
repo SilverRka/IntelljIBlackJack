@@ -1,10 +1,8 @@
 package blackjack;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
 import java.io.IOException;
-import java.awt.Graphics2D; 
 
 public class Card {  
   private int suit; //suit of the card (Clubs[0], Diamonds[1], Hearts[3], or Spades[4]) 

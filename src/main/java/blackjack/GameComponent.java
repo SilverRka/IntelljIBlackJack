@@ -1,16 +1,16 @@
 package blackjack;
 
-import blackjack.Card;
-import javax.swing.JComponent;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.util.ArrayList;
+import blackjack.player.DefaultSoundPlayer;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JOptionPane;
-import java.io.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class GameComponent extends JComponent implements MouseListener {//this class will implement the MouseListener because we will check if the user clicked a certain coordinate on the component.
@@ -135,7 +135,7 @@ public class GameComponent extends JComponent implements MouseListener {//this c
 
       System.out.println("You have made your bet: " + currentBet + "." + " If you beat the dealer, you will increase your current balance by " + currentBet*2 +
               "; if the dealer beats you you will decrease your current balance by " + currentBet + "."); //each time the player bets, we inform the consequences from the console.
-      //playChipsSettle(); //we then play this music which gives you the sound of poker chips settling on a poker table.
+      playChipsSettle(); //we then play this music which gives you the sound of poker chips settling on a poker table.
       Tester.newGame.startGame(); //then we start the game.
     }
 
@@ -155,12 +155,7 @@ public class GameComponent extends JComponent implements MouseListener {//this c
 
   public static void playChipsSettle() {//this is a static method that plays a wav file when it is called.
 
-    try{
-      InputStream in = new FileInputStream("/Users/rajat.agrawal/personal/IntelljIBlackJack/src/main/java/blackjack/sounds/chipsSettle.wav"); //we first read the wav file.
-      //AudioStream audio = new AudioStream(in); //then store it as an audio stream.
-
-      //AudioPlayer.player.start(audio); //then, we basically 'play' this sound through AudioPlayer.
-    }
-    catch(IOException e) {}
+    String path = "/Users/paras.narang/Zen/events/fk_hackday_20/IntelljIBlackJack/src/main/java/blackjack/sounds/chipsSettle.wav";
+    DefaultSoundPlayer.ofFile(Paths.get(path)).playAndWait(); //then, we basically 'play' this sound through AudioPlayer.
   }
 }

@@ -43,6 +43,7 @@ repositories {
 }
 dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.14.2")
+    implementation("com.googlecode.soundlibs:mp3spi:1.9.5.4")
 }
 
 // Configure gradle-intellij-plugin plugin.
