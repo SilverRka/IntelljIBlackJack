@@ -9,8 +9,6 @@ public class PlayGameAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
         int amount = 1000;
-//        BlackJack blackJack
-//                = new BlackJack(amount);
         Tester.openMenu();
     }
 
