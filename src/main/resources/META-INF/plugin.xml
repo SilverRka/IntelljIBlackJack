@@ -7,9 +7,17 @@
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+                id="BlackJack.Break"
+                anchor="right"
+                factoryClass="blackjack.plugin.BlackJackToolWindowFactory"
+                icon="/images/chipIcon.png" />
+    </extensions>
+
     <actions>
         <action id="com.github.silverrka.intelljiblackjack.actions.PlayGameAction" class="com.github.silverrka.intelljiblackjack.actions.PlayGameAction"
-                text="Play Game Action" description="Play game example">
+                text="Take A Break - Play BlackJack!" description="Play game example">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
     </actions>

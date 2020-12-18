@@ -29,7 +29,7 @@ public class OptionsComponent extends JComponent implements ActionListener{
 
     g2.drawImage(backgroundImage, 0, 0, null); //we draw the background image to the component.
 
-    g2.setFont(new Font("Comic Sans MS", Font.BOLD, 100)); //In these codes, we will add the title of our game and its font and color.
+    g2.setFont(new Font("Default", Font.BOLD, 100)); //In these codes, we will add the title of our game and its font and color.
     g2.setColor(Color.WHITE);
     g2.drawString("Welcome", 380, 100);
     g2.drawString("to", 530, 180);
@@ -42,10 +42,10 @@ public class OptionsComponent extends JComponent implements ActionListener{
     btnHelp.setBounds(80, 75, 150, 80);
     btnInfo.setBounds(900, 75, 150, 80);
 
-    btnPlay.setFont(new Font("Comic Sans MS", Font.BOLD, 40)); //we set the fonts of writings on the buttons.
-    btnExit.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
-    btnHelp.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
-    btnInfo.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
+    btnPlay.setFont(new Font("Default", Font.BOLD, 40)); //we set the fonts of writings on the buttons.
+    btnExit.setFont(new Font("Default", Font.BOLD, 40));
+    btnHelp.setFont(new Font("Default", Font.BOLD, 40));
+    btnInfo.setFont(new Font("Default", Font.BOLD, 40));
 
     super.add(btnPlay); //super refers to the JComponent. Thus, with these codes, we add the four buttons to the component.
     super.add(btnExit);
@@ -71,14 +71,12 @@ public class OptionsComponent extends JComponent implements ActionListener{
                       "\nFace cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand." +
                       "\nEach player starts with two cards, one of the dealer's cards is hidden until the end." +
                       "\nTo 'Hit' is to ask for another card. To 'Stand' is to hold your total and end your turn." +
-                      "\nIf you go over 21 you bust, and the dealer wins regardless of the dealer's hand." +
-                      "\nIf you go over 21 you bust, and the dealer wins regardless of the dealer's hand." +
+                      "\nIf you go over 21 you bust, then the dealer wins regardless of the dealer's hand." +
                       "\nIf you are dealt 21 from the start (Ace & 10), you got a blackjack.", "QUICK&EASY BLACKJACK HELP",
               JOptionPane.INFORMATION_MESSAGE);
     }
     else if(selectedButton == btnInfo) {//if the selected button is the info button (btnInfo), we open up a J Option Pane that will contain information about the program.
-      JOptionPane.showMessageDialog(this, "This project was done by Ongun Uzay Macar as a final project for" +
-              "\nAdvanced Programming in January 2016 in the guidance of Cengiz Agalar.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(this, "HackDay 2020. IntelliJ Plugin to take a quick intellectual break and play blackjack!", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
     }
   }
 

@@ -45,20 +45,25 @@ public class GameComponent extends JComponent implements MouseListener {//this c
     g2.drawImage(logo, 510, 200, null);
     g2.drawImage(chip, 50, 300, null);
     g2.setColor(Color.WHITE); //we set the colors.
-    g2.setFont(new Font("Comic Sans MS", Font.BOLD, 30)); //we change their fonts.
+    g2.setFont(new Font("Default", Font.BOLD, 30)); //we change their fonts.
     g2.drawString("DEALER", 515, 50); //we draw these strings which visualize the game.
     g2.drawString("PLAYER", 515, 380);
     g2.drawString("DEALER WON: ", 50, 100);
     g2.drawString(Integer.toString(dealerScore), 300, 100); //we draw the dealer's score accordingly.
     g2.drawString("PLAYER WON: ", 50, 150);
     g2.drawString(Integer.toString(playerScore), 300, 150); //we draw the player's score accordingly.
-    g2.setFont(new Font("Comic Sans MS", Font.BOLD, 15)); //we set the font again.
+    g2.setFont(new Font("Default", Font.BOLD, 15)); //we set the font again.
     g2.drawString("To start each round, you have to first", 50, 250);
     g2.drawString("bet an amount by clicking the chip below.", 50, 270);
     g2.drawString("The best gaming experience is ", 830, 550);
     g2.drawString("when you play with sound on!", 830, 570);
-    g2.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+    g2.setFont(new Font("Default", Font.BOLD, 20));
     g2.drawString("CURRENT BALANCE: " + currentBalance, 50, 570); //we write the current balance on the component.
+    if (GameComponent.betMade) {
+      g2.drawString("CURRENT BET: " + GameComponent.currentBet, 50, 550); //we write the current balance on the component.
+      g2.drawString(String.valueOf(computeOpenDealerSumOfHands()), 830, 150);
+      g2.drawString(String.valueOf(Game.playerHandTotal), 830, 400);
+    }
 
     Calendar cal = Calendar.getInstance();
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -79,14 +84,18 @@ public class GameComponent extends JComponent implements MouseListener {//this c
         }
       }
     }
-    catch (IOException e) {}
+    catch (IOException e) {
+      e.printStackTrace();
+    }
 
     try {
       for (int i = 0; i < playerHand.size(); i++) { //we do the same thing for the user hand with a foor loop again: we go through each of the cards in user's hand.
         playerHand.get(i).printCard(g2, false, false, i); //we then draw each of the card on the component(screen). Extra information about parameters can be found in the blackjack.Card class.
       }
     }
-    catch (IOException e) {}
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   public void refresh(int cB, int uS, int dS, boolean fD) { //this refresh method will refresh the blackjack.GameComponent when it is called.
@@ -95,6 +104,13 @@ public class GameComponent extends JComponent implements MouseListener {//this c
     dealerScore = dS;
     faceDown = fD;
     this.repaint();
+  }
+
+  public int computeOpenDealerSumOfHands() {
+    if (faceDown && dealerHand.size() == 2) {
+      return dealerHand.get(1).getValue();
+    }
+    return Game.dealerHandTotal;
   }
 
   public void mousePressed(MouseEvent e) {//in this void method, we will control mouse events of the user.

@@ -1,7 +1,5 @@
-package blackjack;//THIS IS A PROJECT DONE BY UZAY MACAR THAT IS DUE TO 08.01.2016 12:00.
+package blackjack;
 //THIS PROJECT IS A FLUENT BLACKJACK GAME THAT HAS A MENU AND A GAMING COMPONENT.
-//UZAY MACAR CODED BOTH THE INSIDE GAME MECHANICS (CARD, DECK, AND GAME CLASSES)
-//AND OUTSIDE COMPONENTS (THE LAYOUT, BUTTONS, MENU, ETC.)
 
 import javax.swing.*;
 
@@ -59,11 +57,13 @@ public class Tester {
           if (newGame.dealerWon){//if dealer won the game,
             dealerScore++; //we add one to the score of dealer.
             currentBalance-= GameComponent.currentBet; //we also subtract the bet from the current balance.
-          }
-          else {//if dealer didn't win, then the user won. 
+          } else if (newGame.isTied) { // game tied
+            currentBalance = currentBalance; // nothing changes
+          } else {//if dealer didn't win, then the user won.
             playerScore++; //we add one to the score of player.
-            currentBalance+= GameComponent.currentBet*2; //we add two times the bet to the current balance.
+            currentBalance+= GameComponent.currentBet; //we add two times the bet to the current balance.
           }
+          GameComponent.betMade = false; //reset
           gameFrame.getContentPane().removeAll(); //we remove everything from the frame.
           newGame = new Game(gameFrame); //we initialize a new game on the same frame.
           newGame.formGame(); //we set the atmosphere of the game(which is everything except the cards.)
