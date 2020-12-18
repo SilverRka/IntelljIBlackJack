@@ -63,7 +63,7 @@ public class Tester {
             currentBalance = currentBalance; // nothing changes
           } else {//if dealer didn't win, then the user won.
             playerScore++; //we add one to the score of player.
-            currentBalance+= GameComponent.currentBet*2; //we add two times the bet to the current balance.
+            currentBalance+= GameComponent.currentBet; //we add two times the bet to the current balance.
           }
           gameFrame.getContentPane().removeAll(); //we remove everything from the frame.
           newGame = new Game(gameFrame); //we initialize a new game on the same frame.
