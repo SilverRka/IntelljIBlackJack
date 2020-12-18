@@ -79,14 +79,18 @@ public class GameComponent extends JComponent implements MouseListener {//this c
         }
       }
     }
-    catch (IOException e) {}
+    catch (IOException e) {
+      e.printStackTrace();
+    }
 
     try {
       for (int i = 0; i < playerHand.size(); i++) { //we do the same thing for the user hand with a foor loop again: we go through each of the cards in user's hand.
         playerHand.get(i).printCard(g2, false, false, i); //we then draw each of the card on the component(screen). Extra information about parameters can be found in the blackjack.Card class.
       }
     }
-    catch (IOException e) {}
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   public void refresh(int cB, int uS, int dS, boolean fD) { //this refresh method will refresh the blackjack.GameComponent when it is called.

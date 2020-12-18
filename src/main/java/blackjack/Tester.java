@@ -59,8 +59,9 @@ public class Tester {
           if (newGame.dealerWon){//if dealer won the game,
             dealerScore++; //we add one to the score of dealer.
             currentBalance-= GameComponent.currentBet; //we also subtract the bet from the current balance.
-          }
-          else {//if dealer didn't win, then the user won. 
+          } else if (newGame.isTied) { // game tied
+            currentBalance = currentBalance; // nothing changes
+          } else {//if dealer didn't win, then the user won.
             playerScore++; //we add one to the score of player.
             currentBalance+= GameComponent.currentBet*2; //we add two times the bet to the current balance.
           }
