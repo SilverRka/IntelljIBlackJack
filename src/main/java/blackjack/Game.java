@@ -83,7 +83,7 @@ public class Game {
 
     btnExit.addActionListener(new ActionListener() { //we add a action listener to the exit button. 
       public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(frame, "You have left the casino with " +  Tester.currentBalance + "."); //we print out the message by getting our current balance from the Tester class.
+        JOptionPane.showMessageDialog(null, "You have left the casino with " +  Tester.currentBalance + "."); //we print out the message by getting our current balance from the Tester class.
         System.exit(0); //we exit the program.
       }
     });
@@ -150,7 +150,7 @@ public class Game {
           checkHand(playerHand, playerHandTotal); //we check the player's hand.
         }
         else {
-          JOptionPane.showMessageDialog(frame, "Not enough balance to double bet."); //Not enough balance
+          JOptionPane.showMessageDialog(null, "Not enough balance to double bet."); //Not enough balance
         }
       }
     });
@@ -165,19 +165,19 @@ public class Game {
           if(playerHandTotal > dealerHandTotal) {
             faceDown = false;
             dealerWon = false;
-            JOptionPane.showMessageDialog(frame, "PLAYER HAS WON BECAUSE OF A BETTER HAND!");
+            JOptionPane.showMessageDialog(null, "PLAYER HAS WON BECAUSE OF A BETTER HAND!");
             rest();
             roundOver = true;
           } else if(playerHandTotal == dealerHandTotal) {
             faceDown = false;
             dealerWon = false;
             isTied = true;
-            JOptionPane.showMessageDialog(frame, "GAME TIED!");
+            JOptionPane.showMessageDialog(null, "GAME TIED!");
             rest();
             roundOver = true;
           } else {
             faceDown = false;
-            JOptionPane.showMessageDialog(frame, "DEALER HAS WON BECAUSE OF A BETTER HAND!");
+            JOptionPane.showMessageDialog(null, "DEALER HAS WON BECAUSE OF A BETTER HAND!");
             rest();
             roundOver = true;
           }
@@ -196,13 +196,13 @@ public class Game {
       if(sumHand == 21){ //if it is 21, player has done blackjack and the game is over.
         faceDown = false;
         dealerWon = false; //we set it to false because user won.
-        JOptionPane.showMessageDialog(frame, "PLAYER HAS DONE BLACKJACK! PLAYER HAS WON!"); //we print out the result ot JOptionPane.
+        JOptionPane.showMessageDialog(null, "PLAYER HAS DONE BLACKJACK! PLAYER HAS WON!"); //we print out the result ot JOptionPane.
         rest();
         roundOver = true;
       }
       else if (sumHand > 21) { //if it is bigger than 21, then the player hand has busted, dealer has won.
         faceDown = false;
-        JOptionPane.showMessageDialog(frame, "PLAYER HAS BUSTED! DEALER HAS WON!"); //not proper
+        JOptionPane.showMessageDialog(null, "PLAYER HAS BUSTED! DEALER HAS WON!"); //not proper
         rest();
         roundOver = true;
       }
@@ -210,14 +210,14 @@ public class Game {
     else { //else condition checks if it is dealer's hand.
       if(sumHand == 21) { //we basically look for the same things we looked for the player's hand.
         faceDown = false;
-        JOptionPane.showMessageDialog(frame, "DEALER HAS DONE BLACKJACK! DEALER HAS WON!");
+        JOptionPane.showMessageDialog(null, "DEALER HAS DONE BLACKJACK! DEALER HAS WON!");
         rest();
         roundOver = true;
       }
       else if (sumHand > 21) {
         faceDown = false;
         dealerWon = false;
-        JOptionPane.showMessageDialog(frame, "DEALER HAS JUST BUSTED! PLAYER HAS WON!"); // not proper
+        JOptionPane.showMessageDialog(null, "DEALER HAS JUST BUSTED! PLAYER HAS WON!"); // not proper
         rest();
         roundOver = true;
       }
