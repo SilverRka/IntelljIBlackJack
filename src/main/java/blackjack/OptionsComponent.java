@@ -77,8 +77,7 @@ public class OptionsComponent extends JComponent implements ActionListener{
               JOptionPane.INFORMATION_MESSAGE);
     }
     else if(selectedButton == btnInfo) {//if the selected button is the info button (btnInfo), we open up a J Option Pane that will contain information about the program.
-      JOptionPane.showMessageDialog(this, "This project was done by Ongun Uzay Macar as a final project for" +
-              "\nAdvanced Programming in January 2016 in the guidance of Cengiz Agalar.", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(this, "HackDay 2020. IntelliJ Plugin to take a quick intellectual break and play blackjack!", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
     }
   }
 
