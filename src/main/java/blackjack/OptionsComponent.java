@@ -71,8 +71,7 @@ public class OptionsComponent extends JComponent implements ActionListener{
                       "\nFace cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand." +
                       "\nEach player starts with two cards, one of the dealer's cards is hidden until the end." +
                       "\nTo 'Hit' is to ask for another card. To 'Stand' is to hold your total and end your turn." +
-                      "\nIf you go over 21 you bust, and the dealer wins regardless of the dealer's hand." +
-                      "\nIf you go over 21 you bust, and the dealer wins regardless of the dealer's hand." +
+                      "\nIf you go over 21 you bust, then the dealer wins regardless of the dealer's hand." +
                       "\nIf you are dealt 21 from the start (Ace & 10), you got a blackjack.", "QUICK&EASY BLACKJACK HELP",
               JOptionPane.INFORMATION_MESSAGE);
     }
