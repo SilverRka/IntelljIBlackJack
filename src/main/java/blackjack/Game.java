@@ -65,16 +65,16 @@ public class Game {
 
     btnHit = new JButton("HIT"); //In the following code snippet, we basically initialize our buttons and design them in the way we want them to be.
     btnHit.setBounds(390, 550, 100, 50); //We set their bounds.
-    btnHit.setFont(new Font("Comic Sans MS", Font.BOLD, 16));  //We set their font.
+    btnHit.setFont(new Font("Default", Font.BOLD, 16));  //We set their font.
     btnStand = new JButton("STAND");
     btnStand.setBounds(520, 550, 100, 50);
-    btnStand.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+    btnStand.setFont(new Font("Default", Font.BOLD, 16));
     btnDouble = new JButton("DOUBLE");
     btnDouble.setBounds(650, 550, 100, 50);
-    btnDouble.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+    btnDouble.setFont(new Font("Default", Font.BOLD, 16));
     btnExit = new JButton("EXIT CASINO");
     btnExit.setBounds(930, 240, 190, 50);
-    btnExit.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+    btnExit.setFont(new Font("Default", Font.BOLD, 16));
 
     frame.add(btnHit); //we add the buttons the JFrame
     frame.add(btnStand);

@@ -29,7 +29,7 @@ public class OptionsComponent extends JComponent implements ActionListener{
 
     g2.drawImage(backgroundImage, 0, 0, null); //we draw the background image to the component.
 
-    g2.setFont(new Font("Comic Sans MS", Font.BOLD, 100)); //In these codes, we will add the title of our game and its font and color.
+    g2.setFont(new Font("Default", Font.BOLD, 100)); //In these codes, we will add the title of our game and its font and color.
     g2.setColor(Color.WHITE);
     g2.drawString("Welcome", 380, 100);
     g2.drawString("to", 530, 180);
@@ -42,10 +42,10 @@ public class OptionsComponent extends JComponent implements ActionListener{
     btnHelp.setBounds(80, 75, 150, 80);
     btnInfo.setBounds(900, 75, 150, 80);
 
-    btnPlay.setFont(new Font("Comic Sans MS", Font.BOLD, 40)); //we set the fonts of writings on the buttons.
-    btnExit.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
-    btnHelp.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
-    btnInfo.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
+    btnPlay.setFont(new Font("Default", Font.BOLD, 40)); //we set the fonts of writings on the buttons.
+    btnExit.setFont(new Font("Default", Font.BOLD, 40));
+    btnHelp.setFont(new Font("Default", Font.BOLD, 40));
+    btnInfo.setFont(new Font("Default", Font.BOLD, 40));
 
     super.add(btnPlay); //super refers to the JComponent. Thus, with these codes, we add the four buttons to the component.
     super.add(btnExit);
