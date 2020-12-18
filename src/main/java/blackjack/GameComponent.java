@@ -59,6 +59,11 @@ public class GameComponent extends JComponent implements MouseListener {//this c
     g2.drawString("when you play with sound on!", 830, 570);
     g2.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
     g2.drawString("CURRENT BALANCE: " + currentBalance, 50, 570); //we write the current balance on the component.
+    if (GameComponent.betMade) {
+      g2.drawString("CURRENT BET: " + GameComponent.currentBet, 50, 550); //we write the current balance on the component.
+      g2.drawString(String.valueOf(computeOpenDealerSumOfHands()), 830, 150);
+      g2.drawString(String.valueOf(Game.playerHandTotal), 830, 400);
+    }
 
     Calendar cal = Calendar.getInstance();
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -99,6 +104,13 @@ public class GameComponent extends JComponent implements MouseListener {//this c
     dealerScore = dS;
     faceDown = fD;
     this.repaint();
+  }
+
+  public int computeOpenDealerSumOfHands() {
+    if (faceDown && dealerHand.size() == 2) {
+      return dealerHand.get(1).getValue();
+    }
+    return Game.dealerHandTotal;
   }
 
   public void mousePressed(MouseEvent e) {//in this void method, we will control mouse events of the user.

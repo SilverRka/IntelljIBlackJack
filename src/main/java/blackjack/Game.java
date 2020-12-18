@@ -18,6 +18,8 @@ public class Game {
 
   ArrayList<Card> dealerHand; //this is the arraylist for the dealer's hand.
   ArrayList<Card> playerHand; //this is the arraylist for the player's hand.
+  public static int dealerHandTotal;
+  public static int playerHandTotal;
 
   public boolean faceDown; //this boolean value will tell the program if we have the card facedown or faceup.
   public boolean dealerWon; //this boolean value will tell the program if dealer won the round.
@@ -103,20 +105,21 @@ public class Game {
     for (int i = 0; i < 4; i++) { //we then remove these cards from the game. This way, we literally 'drew' the cards and those four cards are no longer in the deck.
       deck.removeCard(0);
     }
+    computeSumOfHands();
 
     cardComponent = new GameComponent(dealerHand, playerHand); //we initialize our component which accepts two card arraylists.
     cardComponent.setBounds(0, 0, 1130, 665); //we set the bounds of our component.
     frame.add(cardComponent); //we add the component to the grame.
     frame.setVisible(true); //we make the frame visible.
 
-    checkHand(dealerHand); //at the beginning of the game, we first check the hand of the dealer and the hand of the player to look for a blackjack. (ther can't be a bust)
-    checkHand(playerHand);
+    checkHand(dealerHand, dealerHandTotal); //at the beginning of the game, we first check the hand of the dealer and the hand of the player to look for a blackjack. (ther can't be a bust)
+    checkHand(playerHand, playerHandTotal);
 
     btnHit.addActionListener(new ActionListener() { //we add a action listener to the hit button. When the user clicks this button,
       public void actionPerformed(ActionEvent e) {
         playCardDraw();
         addCard(playerHand); //we will first add a card to player's hand.
-        checkHand(playerHand); //then we check the player's hand because it could be round over.
+        checkHand(playerHand, playerHandTotal); //then we check the player's hand because it could be round over.
 //        if (getSumOfHand(playerHand)<17 && getSumOfHand(dealerHand)<17){ //if the round is not over, and if the total value of dealer's hand is smaller than 17, we add a card to dealer's hand.
 //          addCard(dealerHand);
 //          checkHand(dealerHand); //as usual, we check his hand for any potential round over situation.
@@ -144,7 +147,7 @@ public class Game {
           GameComponent.currentBet = GameComponent.currentBet*2;
           playCardDraw(); //we play the card drawing music here.
           addCard(playerHand); //we add a card to the player hand.
-          checkHand(playerHand); //we check the player's hand.
+          checkHand(playerHand, playerHandTotal); //we check the player's hand.
         }
         else {
           JOptionPane.showMessageDialog(frame, "Not enough balance to double bet."); //Not enough balance
@@ -154,20 +157,18 @@ public class Game {
 
     btnStand.addActionListener(new ActionListener() {//When user clicks this button, the player stands.
       public void actionPerformed(ActionEvent e) {
-        int sumPlayer = getSumOfHand(playerHand);
-        while (getSumOfHand(dealerHand)<17) { //if it is appropraite, the dealer draws a card.
+        while (dealerHandTotal<17) { //if it is appropraite, the dealer draws a card.
           addCard(dealerHand);
-          checkHand(dealerHand);
+          checkHand(dealerHand, dealerHandTotal);
         }
-        int sumDealer = getSumOfHand(dealerHand);
-        if ((sumDealer<21) && sumPlayer<21) {//if both hands didn't reach 21, we check which hand is better and print out the result.
-          if(sumPlayer > sumDealer) {
+        if ((dealerHandTotal<21) && playerHandTotal<21) {//if both hands didn't reach 21, we check which hand is better and print out the result.
+          if(playerHandTotal > dealerHandTotal) {
             faceDown = false;
             dealerWon = false;
             JOptionPane.showMessageDialog(frame, "PLAYER HAS WON BECAUSE OF A BETTER HAND!");
             rest();
             roundOver = true;
-          } else if(sumPlayer == sumDealer) {
+          } else if(playerHandTotal == dealerHandTotal) {
             faceDown = false;
             dealerWon = false;
             isTied = true;
@@ -185,8 +186,12 @@ public class Game {
     });
   }
 
-  public void checkHand (ArrayList<Card> hand) {//this method literally checks the hand for a blackjack or bust.
-    int sumHand = getSumOfHand(hand);
+  private void computeSumOfHands() {
+    playerHandTotal = getSumOfHand(playerHand);
+    dealerHandTotal = getSumOfHand(dealerHand);
+  }
+
+  public void checkHand (ArrayList<Card> hand, int sumHand) {//this method literally checks the hand for a blackjack or bust.
     if (hand.equals(playerHand)) { //checks if the parameter is player's hand.
       if(sumHand == 21){ //if it is 21, player has done blackjack and the game is over.
         faceDown = false;
@@ -223,6 +228,7 @@ public class Game {
     hand.add(deck.getCard(0)); //gets a card from the deck to the hand.
     deck.removeCard(0); //removes the card from the deck.
     faceDown = true;
+    computeSumOfHands();
   }
 
   public boolean hasAceInHand(ArrayList<Card> hand) {//this method checks if the hand has ace.

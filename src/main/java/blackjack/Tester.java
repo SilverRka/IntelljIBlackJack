@@ -65,6 +65,7 @@ public class Tester {
             playerScore++; //we add one to the score of player.
             currentBalance+= GameComponent.currentBet; //we add two times the bet to the current balance.
           }
+          GameComponent.betMade = false; //reset
           gameFrame.getContentPane().removeAll(); //we remove everything from the frame.
           newGame = new Game(gameFrame); //we initialize a new game on the same frame.
           newGame.formGame(); //we set the atmosphere of the game(which is everything except the cards.)
