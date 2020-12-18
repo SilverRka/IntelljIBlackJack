@@ -13,8 +13,8 @@ import java.time.ZoneId;
 public class TimeTracker {
     private static long firstActivityAt = 0;
     private static long lastActivityAt = 0;
-    private static long continuousThreshold = 5;
-    private static long maxContinuousThreshold = 10;
+    public static final long continuousThreshold = 10;
+    public static final long maxContinuousThreshold = 120;
 
     public static void trackActivity(LocalDateTime time) {
         ZoneId zoneId = ZoneId.systemDefault();
@@ -32,6 +32,7 @@ public class TimeTracker {
                 }
             }
         } else {
+            System.out.println("start time reset to: " + time);
             firstActivityAt = now;
             lastActivityAt = now;
         }

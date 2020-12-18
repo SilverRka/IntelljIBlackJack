@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class DocumentSaveListener implements FileDocumentManagerListener {
     @Override
     public void beforeDocumentSaving(@NotNull Document document) {
+        System.out.println("Document Saved: " + LocalDateTime.now());
         TimeTracker.trackActivity(LocalDateTime.now());
     }
 }

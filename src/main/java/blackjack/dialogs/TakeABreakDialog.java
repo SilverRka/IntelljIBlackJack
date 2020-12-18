@@ -1,5 +1,6 @@
 package blackjack.dialogs;
 
+import blackjack.util.TimeTracker;
 import com.intellij.openapi.ui.DialogWrapper;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,8 +24,9 @@ public class TakeABreakDialog extends DialogWrapper {
     @Override
     protected JComponent createCenterPanel() {
         JPanel dialogPanel = new JPanel(new BorderLayout());
-
-        JLabel label = new JLabel("You have worked more than 1 min continuously. Please take a brak");
+        long timeNumber = TimeTracker.maxContinuousThreshold >= 60 ? TimeTracker.maxContinuousThreshold/60 : TimeTracker.maxContinuousThreshold;
+        String timeUnit = TimeTracker.maxContinuousThreshold >= 60 ? "minute" : "second";
+        JLabel label = new JLabel("You have worked more than "+ timeNumber + " " + (timeNumber > 1 ? timeUnit + "s" : timeUnit) + " continuously. Do you want to take break for some time?");
         label.setPreferredSize(new Dimension(100, 100));
         dialogPanel.add(label, BorderLayout.CENTER);
 
